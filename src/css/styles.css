@@ -1,0 +1,231 @@
+/* ── VARIABLES (NOOR) ── */
+:root {
+    --navy:  #0D1B2A;
+    --navy2: #1B2E45;
+    --steel: #2E4A6B;
+    --black: #080C10;
+    --gold:  #C9A96E;
+    --gold2: #E2C99A;
+    --ice:   #C8D8E8;
+    --white: #F5F7FA;
+}
+
+/* ── BASE ── */
+body {
+    background-color: var(--navy);
+    color: var(--white);
+    font-family: Georgia, serif;
+    margin: 0;
+}
+
+/* ── HEADER ── */
+header {
+    padding: 25px 30px;
+}
+
+header h1 {
+    font-family: 'Cormorant Garamond', serif;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: #F5F7FA;
+}
+
+header h1 span {
+    color: #C9A96E;
+} 
+
+/* NAV */
+nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px;
+    padding: 10px 0 0;
+}
+
+nav a {
+    text-decoration: none;
+    color: var(--ice);
+    font-size: 0.9rem;
+    letter-spacing: 0.05em;
+    transition: color 0.2s;
+}
+
+nav a:hover {
+    color: var(--gold);
+}
+
+/* ── SECCIONES TIPO TARJETA (NOOR STYLE) ── */
+section {
+    background: var(--white);
+    color: var(--steel);
+    margin: 20px;
+    padding: 30px;
+    border-radius: 10px;
+    box-shadow: 0 6px 20px rgba(13,27,42,0.1);
+}
+
+/* ── TITULOS ── */
+h2 {
+    font-weight: 500;
+    color: var(--navy);
+    border-bottom: 2px solid var(--gold);
+    padding-bottom: 6px;
+    margin-bottom: 15px;
+}
+
+/* ── TEXTO ── */
+p {
+    line-height: 1.7;
+}
+
+/* ── LISTAS ── */
+ul li {
+    margin-bottom: 8px;
+}
+
+/* ── FORMULARIO ── */
+input, textarea {
+    width: 100%;
+    margin-bottom: 12px;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid rgba(13,27,42,0.1);
+    font-family: inherit;
+}
+
+button {
+    background: var(--gold);
+    color: var(--black);
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--gold2);
+}
+
+/* ── FOOTER ── */
+footer {
+    text-align: center;
+    padding: 20px;
+    color: var(--ice);
+}
+
+/* ── GALERÍA (MASCOTAS) ── */
+.galeria {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+    gap: 20px;
+    margin: 20px;
+}
+
+.galeria article {
+    background: var(--navy2);
+    border-radius: 10px;
+    overflow: hidden;
+    transition: transform 0.3s;
+}
+
+.galeria article:hover {
+    transform: translateY(-5px);
+}
+
+.galeria img {
+    width: 100%;
+    height: 350px;
+    object-fit: cover;
+}
+
+.galeria p {
+    padding: 15px;
+    color: var(--ice);
+}
+
+/* ── BOTÓN VOLVER ── */
+.volver {
+    display: block;
+    margin: 20px;
+    color: var(--gold);
+    text-decoration: none;
+}
+
+.volver:hover {
+    text-decoration: underline;
+}
+
+/* ── HERO ── */
+.hero {
+    background: linear-gradient(135deg, var(--navy), var(--navy2));
+    margin: 20px;
+    border-radius: 10px;
+    padding: 60px 30px;
+}
+
+.hero-content {
+    max-width: 600px;
+}
+
+.eyebrow {
+    font-size: 0.7rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: var(--gold);
+    display: block;
+    margin-bottom: 10px;
+}
+
+.hero h2 {
+    font-size: 2rem;
+    font-weight: 500;
+    color: var(--white);
+    border: none;
+}
+
+.hero p {
+    color: var(--ice);
+    margin: 15px 0 20px;
+}
+
+/* BOTÓN */
+.btn {
+    background: var(--gold);
+    color: var(--black);
+    padding: 10px 20px;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.btn:hover {
+    background: var(--gold2);
+}
+
+/* ── CARDS (PROYECTOS) ── */
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--navy2);
+    color: var(--white);
+    padding: 20px;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    font-family: Georgia, serif;
+    margin-bottom: 10px;
+}
+
+.card a {
+    color: var(--gold);
+    text-decoration: none;
+}
+

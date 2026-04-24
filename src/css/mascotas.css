@@ -1,0 +1,408 @@
+/* ════════════════════════════════════════════════
+   MASCOTAS — mascotas.css
+   Optimizado: variables globales, reglas agrupadas,
+   media queries completas (móvil / tablet / desktop)
+   ════════════════════════════════════════════════ */
+
+/* ── VARIABLES GLOBALES ── */
+:root {
+  --navy:  #0D1B2A;
+  --navy2: #1B2E45;
+  --steel: #2E4A6B;
+  --black: #080C10;
+  --gold:  #C9A96E;
+  --gold2: #E2C99A;
+  --ice:   #C8D8E8;
+  --white: #F5F7FA;
+
+  --border-gold-subtle: 1px solid rgba(201,169,110,0.08);
+  --border-gold-mid:    1px solid rgba(201,169,110,0.15);
+
+  --font-serif: 'Cormorant Garamond', Georgia, serif;
+  --font-body:  Georgia, serif;
+
+  --sp-sm:  16px;
+  --sp-md:  24px;
+  --sp-lg:  48px;
+  --sp-xl:  64px;
+
+  --transition: 0.25s ease;
+}
+
+/* ── RESET BASE ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+  background-color: var(--navy);
+  color: var(--white);
+  font-family: var(--font-body);
+  min-height: 100vh;
+  line-height: 1.6;
+}
+
+/* ── HEADER ── */
+header {
+  padding: 32px var(--sp-lg) 24px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  border-bottom: var(--border-gold-mid);
+}
+
+header h1 {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 550;
+  font-size: 2.4rem;
+  letter-spacing: 0.06em;
+  color: var(--white);
+}
+
+header h1 span { color: var(--gold); }
+
+/* ── NAV ── */
+nav ul {
+  list-style: none;
+  display: flex;
+  gap: 28px;
+  padding-top: 6px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--ice);
+  font-size: 0.85rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  transition: color var(--transition);
+}
+
+nav a:hover { color: var(--gold); }
+
+/* Menú hamburguesa */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 8px;
+  flex-direction: column;
+  gap: 5px;
+  align-self: center;
+}
+
+.nav-toggle span {
+  display: block;
+  width: 22px;
+  height: 1px;
+  background: var(--gold);
+  transition: transform var(--transition), opacity var(--transition);
+}
+
+.nav-toggle.open span:nth-child(1) { transform: translateY(6px) rotate(45deg); }
+.nav-toggle.open span:nth-child(2) { opacity: 0; }
+.nav-toggle.open span:nth-child(3) { transform: translateY(-6px) rotate(-45deg); }
+
+/* ── PAGE HERO ── */
+.page-hero {
+  padding: var(--sp-xl) var(--sp-lg) var(--sp-lg);
+  position: relative;
+  overflow: hidden;
+}
+
+.page-hero::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -80px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(201,169,110,0.06) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ── EYEBROW (compartido) ── */
+.page-eyebrow {
+  font-size: 0.68rem;
+  letter-spacing: 0.35em;
+  text-transform: uppercase;
+  color: var(--gold);
+  display: block;
+  margin-bottom: 14px;
+}
+
+.page-hero h2 {
+  font-family: var(--font-serif);
+  font-size: clamp(2rem, 5vw, 3rem);
+  font-weight: 500;
+  color: var(--white);
+  line-height: 1.15;
+  margin-bottom: 16px;
+}
+
+.page-hero h2 em {
+  font-style: italic;
+  color: var(--gold2);
+}
+
+.page-hero p {
+  color: var(--ice);
+  font-size: 0.95rem;
+  line-height: 1.8;
+  max-width: 480px;
+  opacity: 0.8;
+}
+
+/* ── GALERÍA ── */
+.galeria-wrap { padding: 0 var(--sp-lg) var(--sp-xl); }
+
+.galeria-divider {
+  width: 48px;
+  height: 1px;
+  background: var(--gold);
+  margin-bottom: 40px;
+  opacity: 0.6;
+}
+
+.galeria {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-md);
+}
+
+/* ── TARJETAS DE GALERÍA ── */
+.galeria article {
+  background: var(--navy2);
+  border-radius: 4px;
+  overflow: hidden;
+  position: relative;
+  border: var(--border-gold-subtle);
+  transition: transform 0.4s ease, border-color 0.3s ease, box-shadow 0.4s ease;
+}
+
+.galeria article:hover {
+  transform: translateY(-6px);
+  border-color: rgba(201,169,110,0.25);
+  box-shadow: 0 20px 48px rgba(0,0,0,0.35);
+}
+
+/* Número de foto */
+.galeria article::before {
+  content: attr(data-num);
+  position: absolute;
+  top: 16px; right: 18px;
+  font-family: var(--font-serif);
+  font-size: 0.75rem;
+  letter-spacing: 0.15em;
+  color: var(--gold);
+  opacity: 0.7;
+  z-index: 2;
+  background: rgba(13,27,42,0.6);
+  padding: 3px 8px;
+  border-radius: 2px;
+}
+
+.galeria img {
+  width: 100%;
+  height: 360px;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.6s ease, filter 0.6s ease;
+  filter: brightness(0.92) saturate(0.9);
+}
+
+.galeria article:hover img {
+  transform: scale(1.03);
+  filter: brightness(1) saturate(1);
+}
+
+.galeria-caption {
+  padding: 20px 22px 22px;
+  border-top: 1px solid rgba(201,169,110,0.1);
+}
+
+.galeria-caption p {
+  color: var(--ice);
+  font-size: 0.88rem;
+  line-height: 1.7;
+  opacity: 0.85;
+}
+
+/* ── BOTÓN VOLVER ── */
+.nav-footer { padding: 0 var(--sp-lg) var(--sp-lg); }
+
+.volver {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ice);
+  text-decoration: none;
+  font-size: 0.82rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  opacity: 0.6;
+  transition: opacity var(--transition), color var(--transition);
+}
+
+.volver::before {
+  content: '←';
+  color: var(--gold);
+  transition: transform var(--transition);
+}
+
+.volver:hover { opacity: 1; color: var(--gold); }
+.volver:hover::before { transform: translateX(-3px); }
+
+/* ── LIGHTBOX (JS) ── */
+.lightbox-overlay {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(8,12,16,0.92);
+  z-index: 100;
+  align-items: center;
+  justify-content: center;
+  animation: fadeUp 0.25s ease both;
+}
+
+.lightbox-overlay.active { display: flex; }
+
+.lightbox-overlay img {
+  max-width: 90vw;
+  max-height: 85vh;
+  object-fit: contain;
+  border-radius: 4px;
+  filter: none;
+  height: auto;
+}
+
+.lightbox-close {
+  position: absolute;
+  top: 20px; right: 24px;
+  background: none;
+  border: none;
+  color: var(--gold);
+  font-size: 1.8rem;
+  cursor: pointer;
+  opacity: 0.7;
+  transition: opacity var(--transition);
+  line-height: 1;
+}
+
+.lightbox-close:hover { opacity: 1; }
+
+/* ── ANIMACIONES ── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.page-hero { animation: fadeUp 0.6s ease both; }
+
+.galeria article { animation: fadeUp 0.6s ease both; }
+.galeria article:nth-child(1) { animation-delay: 0.1s; }
+.galeria article:nth-child(2) { animation-delay: 0.2s; }
+.galeria article:nth-child(3) { animation-delay: 0.3s; }
+
+/* ════════════════════════════════════════════════
+   MEDIA QUERIES
+   ════════════════════════════════════════════════ */
+
+/* ── TABLET (≤ 900px) ── */
+@media (max-width: 900px) {
+  header { padding: 28px 32px 20px; }
+
+  .page-hero { padding: 48px 32px 36px; }
+
+  .galeria-wrap { padding: 0 32px 48px; }
+
+  .nav-footer { padding: 0 32px 40px; }
+
+  .galeria { grid-template-columns: repeat(2, 1fr); }
+
+  .galeria img { height: 280px; }
+}
+
+/* ── MÓVIL (≤ 640px) ── */
+@media (max-width: 640px) {
+  header {
+    padding: 20px var(--sp-sm);
+    flex-wrap: wrap;
+    gap: 0;
+    align-items: center;
+  }
+
+  header h1 { font-size: 1.6rem; flex: 1; }
+
+  .nav-toggle { display: flex; }
+
+  nav {
+    width: 100%;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.35s ease;
+  }
+
+  nav.open { max-height: 300px; }
+
+  nav ul {
+    flex-direction: column;
+    gap: 0;
+    padding: var(--sp-sm) 0 var(--sp-sm);
+  }
+
+  nav ul li a {
+    display: block;
+    padding: 10px 4px;
+    border-bottom: 1px solid rgba(201,169,110,0.06);
+  }
+
+  .page-hero {
+    padding: 36px var(--sp-sm) 28px;
+  }
+
+  .page-hero h2 { font-size: clamp(1.7rem, 7vw, 2.2rem); }
+
+  .galeria-wrap { padding: 0 var(--sp-sm) 40px; }
+
+  .galeria { grid-template-columns: 1fr; }
+
+  .galeria img { height: 300px; }
+
+  .nav-footer { padding: 0 var(--sp-sm) 36px; }
+}
+
+/* ── BANNER BIENVENIDA (JS) ── */
+#welcome-banner {
+  background: var(--navy2);
+  border-bottom: 1px solid rgba(201,169,110,0.2);
+  color: var(--gold2);
+  padding: 10px 48px;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  white-space: nowrap;
+  overflow: hidden;
+}
+
+#welcome-banner span {
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#welcome-banner button {
+  background: none;
+  border: none;
+  color: var(--ice);
+  font-size: 1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  line-height: 1;
+  padding: 0;
+  flex-shrink: 0;
+  transition: opacity 0.25s;
+}
+
+#welcome-banner button:hover { opacity: 1; }
